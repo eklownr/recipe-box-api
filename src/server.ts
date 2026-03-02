@@ -15,10 +15,17 @@ let recipes = [
     {id: 4, name: "Tunnbröd bröd", cuisine: "Sweden", prepTime: "90 min" },
 ];
 
-app.get("/recipes", (req, res) =>{
+app.get("/recipes", (req, res) => {
     res.json(recipes)
 });
 
-app.get("/recipes:id", (req, rep) =>{
-
+app.get("/recipes/:id", (req, res) => {
+    const recipeId = parseInt(req.params.id);
+    const recipe = recipes.filter((r) => r.id === recipeId)
+    console.log(recipe);
+    
+        if (!recipe) {
+            return res.status(404).json({massage: `Recipe with id ${recipeId} not fund!`})
+        }
+        res.json(recipe) // return the resipie with id === resipiesId
 });
