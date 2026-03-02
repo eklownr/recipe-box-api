@@ -23,12 +23,12 @@ let recipes: Recipe[] = [
 	{ id: 4, name: "Tunnbröd bröd", cuisine: "Sweden", prepTime: "90 min" },
 ];
 
-// return all recipes
+// response with all recipes
 app.get("/recipes", (req, res) => {
 	res.json(recipes);
 });
 
-// return recipe with id
+// response recipe with id
 app.get("/recipes/:id", (req, res) => {
 	const recipeId = parseInt(req.params.id);
 	const recipe = recipes.filter((r) => r.id === recipeId);
